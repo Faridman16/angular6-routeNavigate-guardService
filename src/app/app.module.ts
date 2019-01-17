@@ -10,6 +10,7 @@ import { HeroesModule } from './heroes/heroes.module';
 import { CrisisModule } from './crisis/crisis.module';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AdminModule } from './admin/admin.module';
     HeroesModule,
     CrisisModule,
     AdminModule,
+    AuthModule,
     AppRoutingModule,
   ],
   providers: [],
