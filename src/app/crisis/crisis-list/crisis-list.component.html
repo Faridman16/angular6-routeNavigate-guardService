@@ -1,0 +1,6 @@
+<ul *ngIf="crisisList" class="crisis">
+  <li *ngFor="let crisis of crisisList">
+    <a routerLink="{{crisis.id}}"><span class="badge">{{crisis.id}}</span>{{crisis.name}}</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>

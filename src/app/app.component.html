@@ -1,0 +1,13 @@
+<h1>Angular Router</h1>
+<nav>
+  <a routerLink="/crisis" routerLinkActive="active">Crisis Center</a>
+  <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+  <a routerLink="/admin" routerLnkActive="active">Admin</a>
+  <a [routerLink]="[{outlets: {popup: ['compose']}}]">Contact</a>
+</nav>
+<div [@routeAnimation]="getAnimationData(routerOutlet)">
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
+<div>
+<router-outlet name="popup"></router-outlet>
+</div>
