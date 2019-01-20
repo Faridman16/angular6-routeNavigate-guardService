@@ -33,6 +33,7 @@ export class CrisisDetailComponent implements OnInit {
       })
     ).subscribe(crisis => {
       this.crisis = crisis;
+      this.beforeEdited = crisis.name;
     });
   }
 
@@ -50,18 +51,9 @@ export class CrisisDetailComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    this.beforeEdited = this.route.paramMap.pipe(
-      switchMap(params => {
-        const crisis_id = params.get('id');
-        return this.crisisService.getCrisis(crisis_id);
-      })
-    ).subscribe(crisis => {
-      return crisis;
-    });
-
-    if (this.beforeEdited.name !== this.crisis.name) {
-      console.log(this.beforeEdited.name);
-      console.log(this.crisis.name);
+    if(this.crisis.name != this.beforeEdited){
+      console.log(this.crisis.name)
+      console.log(this.beforeEdited);
       return this.dialogService.confirm('Discard changes?');
     }
 
