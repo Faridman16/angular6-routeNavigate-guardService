@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,10 @@ export class LoginComponent implements OnInit {
   username: String;
   password: string;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
   }
@@ -18,6 +22,9 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.authService.login({username: this.username, password: this.password}).subscribe(res => {
       this.authService.setStatusLogin(res);
+      const redirect = localStorage.getItem('isLogin') === '1' ? this.authService.redirectUrl : '/heroes';
+      console.log(redirect);
+      this.router.navigate([redirect]);
     });
   }
 

@@ -1,4 +1,5 @@
 <div *ngIf="crisis">
   <h3>ID: {{crisis.id}}</h3>
   <input [(ngModel)]="crisis.name" size="50">
+  <button (click)="onSave()">Save</button><button (click)="onCancel">Cancel</button>
 </div>

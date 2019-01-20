@@ -2,7 +2,8 @@
 <nav>
   <a routerLink="./" routerLinkActive="active"
   [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
-  <a routerLink="./crises" routerLinkActive="active">Manage Crises</a>
-  <a routerLink="./heroes" routerLinkActive="active">Manage Heroes</a>
+  <a routerLink="./manageHeroes" routerLinkActive="active">Manage Crises</a>
+  <a routerLink="./manageCrisis" routerLinkActive="active">Manage Heroes</a>
+  <a (click)="logOut()">Logout</a>
 </nav>
 <router-outlet></router-outlet>
