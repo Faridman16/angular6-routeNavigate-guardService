@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.checkLogin();
   }
 
   onLogin() {
@@ -26,6 +27,11 @@ export class LoginComponent implements OnInit {
       console.log(redirect);
       this.router.navigate([redirect]);
     });
+  }
+
+  checkLogin() {
+    const redirect = this.authService.isLogin === '1' ? '/heroes' : '/login';
+    this.router.navigate([redirect]);
   }
 
   onLogOut() {

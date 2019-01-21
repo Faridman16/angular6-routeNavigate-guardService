@@ -22,7 +22,10 @@ export class CrisisDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getCrisis();
+    this.route.data.subscribe((data: { crisis }) => {
+      this.crisis = data.crisis;
+      this.beforeEdited = data.crisis.name;
+    });
   }
 
   getCrisis() {
@@ -51,9 +54,7 @@ export class CrisisDetailComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    if(this.crisis.name != this.beforeEdited){
-      console.log(this.crisis.name)
-      console.log(this.beforeEdited);
+    if (this.crisis.name !== this.beforeEdited) {
       return this.dialogService.confirm('Discard changes?');
     }
 

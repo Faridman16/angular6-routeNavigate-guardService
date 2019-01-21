@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
   isLogin = localStorage.getItem('isLogin');
   serverUrl = 'http://localhost:3000/auth';
-  redirectUrl: string;
+  redirectUrl = '/heroes';
 
   constructor(private http: HttpClient) { }
 

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
+import { CanActivate,
+          ActivatedRouteSnapshot,
+          RouterStateSnapshot,
+          Router,
+          CanLoad, Route } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +35,19 @@ export class AuthGuard implements CanActivate {
       return false;
     }
 
+  }
+
+  canLoad(route: Route): boolean {
+    const url = `/${route.path}`;
+    if (this.authService.isLogin === '1') {
+      console.log('SUCCESS TO LOAD');
+      this.authService.redirectUrl = url;
+      return true;
+    } else {
+      console.log('FAIT TO LOAD');
+      this.authService.redirectUrl = url;
+      this.router.navigateByUrl('/login');
+      return false;
+    }
   }
 }
